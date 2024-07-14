@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <script>
+      function onReadyStateChange(event) {
+          console.log(ajaxRequest);
+          console.log(ajaxRequest.readyState);
+
+          if (ajaxRequest.readyState === XMLHttpRequest.DONE) {
+              if (ajaxRequest.status === 200) {
+                  console.log(ajaxRequest.responseText);
+              } else {
+                  console.error('request failed');
+              }
+          }
+      }
+
+      const ajaxRequest = new XMLHttpRequest();
+
+      console.log(ajaxRequest);
+
+      ajaxRequest.onreadystatechange = onReadyStateChange;
+      ajaxRequest.open('GET', '/get-with-no-parameter');
+      ajaxRequest.send();
+    </script>
+  </body>
+</html>
