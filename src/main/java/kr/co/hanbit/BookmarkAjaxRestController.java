@@ -19,7 +19,7 @@ public class BookmarkAjaxRestController {
     return "registered";
   }
 
-  @RequestMapping(method = RequestMethod.POST, path = "/bookmarks")
+  @RequestMapping(method = RequestMethod.GET, path = "/bookmarks")
   public List<Bookmark> getBookmarks() {
     return bookmarks;
   }

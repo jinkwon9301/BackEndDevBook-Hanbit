@@ -45,6 +45,7 @@
       function getBookmarkListRequest() {
           function onReadyStateChange(event) {
               const currentAjaxRequest = event.currentTarget;
+              console.log(currentAjaxRequest);
 
               if (ajaxRequest.readyState === XMLHttpRequest.DONE) {
                   if (ajaxRequest.status === 200) {
@@ -52,9 +53,11 @@
                       bookmarkListDom.innerHTML = '';
 
                       const bookmarks = JSON.parse(currentAjaxRequest.responseText);
+                      console.log(currentAjaxRequest.responseText);
+                      console.log(bookmarks);
                       bookmarks.forEach(bookmark => {
                           const liNode = document.createElement('li');
-                          const textNode = document.createElement(bookmark.name + '-' + bookmark.url);
+                          const textNode = document.createTextNode(bookmark.name + '-' + bookmark.url);
                           liNode.appendChild(textNode);
                           bookmarkListDom.appendChild(liNode);
                       });
